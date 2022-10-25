@@ -9,7 +9,10 @@ namespace :challenge do
 
   desc "Clean the workdone"
   task :clean do
-    dir_path = File.join(".", "result")
-    FileUtils.remove_dir(dir_path) if Dir.exist?(dir_path)
+    result_path = File.join(".", "result")
+    test_cases_path = File.join(".", Challenge::Builder::DIR_NAME)
+
+    FileUtils.remove_dir(result_path) if Dir.exist?(result_path)
+    FileUtils.remove_dir(test_cases_path) if Dir.exist?(test_cases_path)
   end
 end
