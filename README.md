@@ -4,7 +4,7 @@ Create test cases with the following command:
 ```
 rake challenge:setup
 ```
-If you need to remove the `result` y `test_cases` directories run:
+If you need to remove the `result` and `test_cases` directories run:
 ```
 rake challenge:clean_test_cases
 rake challenge:clean_result
