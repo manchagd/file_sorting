@@ -4,10 +4,17 @@ require "pry"
 require_relative "../src/file_sorting"
 
 RSpec.describe FileSorting do
-  before do
-    %x'rake challenge:clean'
-    described_class.run!
+  before(:all) do
+    %x'rake challenge:clean_test_cases'
+    %x'rake challenge:clean_result'
+    %x'rake challenge:setup'
   end
+
+  before { described_class.run! }
+
+  after { %x'rake challenge:clean_result' }
+
+  after(:all) { %x'rake challenge:clean_test_cases' }
 
   describe ".run!" do
     let(:result_path) { [".", "result"] }

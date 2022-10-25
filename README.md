@@ -6,7 +6,8 @@ rake challenge:setup
 ```
 If you need to remove the `result` y `test_cases` directories run:
 ```
-rake challenge:clean
+rake challenge:clean_test_cases
+rake challenge:clean_result
 ```
 
 ## Description
