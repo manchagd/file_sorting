@@ -13,7 +13,7 @@ module Challenge
       @size = size
     end
 
-    def run!
+    def build
       build_folder
       build_files
     end
