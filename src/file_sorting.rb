@@ -8,25 +8,35 @@ class FileSorting
       ('a'..'z').to_a.each do |l| 
         FileUtils.mkdir_p("./#{l}") unless Dir.exists?("./#{l}")
       end
+    end
       
     Dir.chdir("../test_cases") do 
       files = Dir.entries(".")
       text = files.each do |f|
-        File.open(f).readline
+        File.open("#{f}").readline
       end 
       file_name = text.map do |t|
         t.gsub("title ", "")
       end
-
-    Dir.chdir(dir_name)
+    end
+            
+    Dir.chdir(dir_name) do
     d = Dir.glob("*")
-    file_name.each do |name|
-      File.new(name)
+    # first_letter = file_name.map { |a| a[0] }
+    file_name.each do |name, d|
+      if name[0] == "#{d}"
+        Dir.chdir("./#{d}") do 
+        File.new("#{name}") unless File.exist?("#{name}")
+        end
+      end
     end
-    if name[0] == d[0..1]
+  end
 
-
-    end
+    # file_name.each do |d, file_name|
+    #   Dir.chdir("./#{d}") do
+    #   if "#{first_letter}" == "#{d}"
+    #     File.new("#{file_name}")
+    #   end
   end
 end
 
